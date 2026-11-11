@@ -1,4 +1,5 @@
-Software_FJ/
+
+FASE-4-PROGRAMACION/
 │
 ├── main.py
 ├── entidades.py
@@ -6,7 +7,7 @@ Software_FJ/
 ├── reservas.py
 ├── excepciones.py
 ├── logs.py
+├── README.md
 │
-├── logs/
-│
-└── README.md
+└── logs/
+    └── eventos.log
