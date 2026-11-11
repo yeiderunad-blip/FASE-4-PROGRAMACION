@@ -9,6 +9,11 @@ cliente1 = Cliente(
     "3001234567"
 )
 
-# Mostrar información
-print("CLIENTE REGISTRADO")
+# Mostrar información del cliente
+print("================================")
+print("       SOFTWARE FJ")
+print("      CLIENTE REGISTRADO")
+print("================================")
+
 print(cliente1.mostrar_informacion())
+
