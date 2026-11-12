@@ -3,6 +3,7 @@ from entidades import Cliente
 from servicios import ServicioSala, ServicioEquipo, ServicioAsesoria
 from reservas import Reserva
 
+from logs import registrar_evento, registrar_error, registrar_advertencia
 
 # Listas para almacenar la informacion durante la ejecucion
 clientes = []
@@ -38,6 +39,8 @@ def registrar_cliente():
         )
 
         clientes.append(cliente)
+        
+        registrar_evento(f"Cliente registrado: {identificacion}")
 
         print("\nCliente registrado correctamente.")
 
@@ -104,6 +107,8 @@ def registrar_reserva():
 
         reservas.append(reserva)
 
+        registrar_evento(f"Reserva registrada para el cliente: {cliente}")
+
         print("\n¡RESERVA REGISTRADA!")
         print(reserva.mostrar_reserva())
 
@@ -146,6 +151,7 @@ def iniciar_programa():
             consultar_reservas()
 
         elif opcion == "5":
+            registrar_evento("El programa ha finalizado.")
             print("\nGracias por utilizar SOFTWARE FJ.")
             print("Programa finalizado.")
             break

@@ -22,3 +22,7 @@ class ServicioNoDisponibleError(ErrorSoftwareFJ):
 # Error cuando una reserva tiene datos incorrectos
 class ReservaInvalidaError(ErrorSoftwareFJ):
     pass
+# Error cuando los datos de un cliente son incorrectos
+class ClienteInvalidoError(ErrorSoftwareFJ):
+    pass
+    
