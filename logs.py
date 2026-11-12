@@ -1,4 +1,7 @@
 import logging
+import os
+
+os.makedirs("logs", exist_ok=True)
 
 logging.basicConfig(
     filename="logs/software_fj.log",
@@ -7,7 +10,7 @@ logging.basicConfig(
     encoding="utf-8"
 )
 
-def registrar_evento(mensaje)
+def registrar_evento(mensaje):
     logging.info(mensaje)
 
 def registrar_error(mensaje):
