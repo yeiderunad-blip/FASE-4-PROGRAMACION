@@ -21,3 +21,7 @@ def registrar_evento(mensaje):
 def registrar_error(mensaje):
     logging.error(mensaje)
 
+    
+# Registrar advertencias
+def registrar_advertencia(mensaje):
+    logging.warning(mensaje)

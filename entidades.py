@@ -1,5 +1,6 @@
 
 from abc import ABC, abstractmethod
+from excepciones import ClienteInvalidoError
 
 
 # ==========================================
@@ -37,29 +38,37 @@ class Cliente(Entidad):
 
         # Validar identificacion
         if not isinstance(identificacion, str) or not identificacion.strip():
-            raise ValueError("La identificacion es obligatoria.")
+            raise ClienteInvalidoError(
+                "La identificacion es obligatoria y debe ser texto."
+            )
 
         # Validar nombre
         if not isinstance(nombre, str) or not nombre.strip():
-            raise ValueError("El nombre es obligatorio.")
+            raise ClienteInvalidoError("El nombre es obligatorio.")
 
         # Validar correo
         if not isinstance(correo, str):
-            raise ValueError("El correo debe ser texto.")
+            raise ClienteInvalidoError("El correo debe ser texto.")
+
+        correo = correo.strip()
 
         if "@" not in correo or "." not in correo.split("@")[-1]:
-            raise ValueError("El correo electronico no es valido.")
+            raise ClienteInvalidoError(
+                "El correo electronico no es valido."
+            )
 
         # Validar telefono
         if not isinstance(telefono, str) or not telefono.isdigit():
-            raise ValueError("El telefono debe contener solamente numeros.")
+            raise ClienteInvalidoError(
+                "El telefono debe contener solamente numeros."
+            )
 
         # Inicializar la clase padre
         super().__init__(identificacion)
 
         # Atributos privados del cliente
         self.__nombre = nombre.strip()
-        self.__correo = correo.strip()
+        self.__correo = correo
         self.__telefono = telefono
 
     # Metodo para mostrar la informacion del cliente
