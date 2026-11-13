@@ -1,4 +1,5 @@
 
+
 from entidades import Cliente
 from servicios import ServicioSala, ServicioEquipo, ServicioAsesoria
 from reservas import Reserva
@@ -39,12 +40,13 @@ def registrar_cliente():
         )
 
         clientes.append(cliente)
-        
+
         registrar_evento(f"Cliente registrado: {identificacion}")
 
         print("\nCliente registrado correctamente.")
 
     except ValueError as error:
+        registrar_advertencia(f"Error al registrar cliente: {error}")
         print(f"\nError: {error}")
 
 
@@ -77,6 +79,7 @@ def registrar_reserva():
 
         if opcion_cliente < 1 or opcion_cliente > len(clientes):
             print("Seleccion de cliente no valida.")
+            registrar_advertencia("Seleccion de cliente no valida.")
             return
 
         cliente = clientes[opcion_cliente - 1]
@@ -99,6 +102,7 @@ def registrar_reserva():
 
         else:
             print("Servicio no valido.")
+            registrar_advertencia("Se selecciono un servicio no valido.")
             return
 
         cantidad = int(input("Ingrese la cantidad de horas o unidades: "))
@@ -107,12 +111,15 @@ def registrar_reserva():
 
         reservas.append(reserva)
 
-        registrar_evento(f"Reserva registrada para el cliente: {cliente}")
+        registrar_evento(
+            f"Reserva registrada para el cliente: {cliente.identificacion}"
+        )
 
         print("\n¡RESERVA REGISTRADA!")
         print(reserva.mostrar_reserva())
 
     except ValueError as error:
+        registrar_advertencia(f"Error al registrar reserva: {error}")
         print(f"\nError: {error}")
 
 
@@ -155,6 +162,13 @@ def iniciar_programa():
             print("\nGracias por utilizar SOFTWARE FJ.")
             print("Programa finalizado.")
             break
+
+        else:
+            print("\nOpcion incorrecta. Intente nuevamente.")
+
+
+if __name__ == "__main__":
+    iniciar_programa()
 
         else:
             print("\nOpcion incorrecta. Intente nuevamente.")
