@@ -17,6 +17,7 @@ logging.basicConfig(
 def registrar_evento(mensaje):
     logging.info(mensaje)
 
+
 # Registrar errores
 def registrar_error(mensaje):
     logging.error(mensaje)
